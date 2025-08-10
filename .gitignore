@@ -2,7 +2,6 @@
 text
 
 # Ignore list file
-list.txt
 
 # Common files to ignore
 *.log
