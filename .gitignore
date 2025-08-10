@@ -1,0 +1,15 @@
+# Ignore the text file containing Seinfeld quotes
+text
+
+# Ignore list file
+list.txt
+
+# Common files to ignore
+*.log
+*.tmp
+*.temp
+node_modules/
+.env
+.DS_Store
+__pycache__/
+*.pyc
