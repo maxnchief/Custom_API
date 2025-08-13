@@ -28,17 +28,35 @@ class SeinfeldCSVToMySQL:
     def connect_to_mysql(self) -> bool:
         """
         Establish connection to MySQL database.
+        Creates the database if it doesn't exist.
         
         Returns:
             bool: True if connection successful, False otherwise
         """
         try:
+            # First connect without specifying database to create it if needed
+            temp_config = self.mysql_config.copy()
+            database_name = temp_config.pop('database')
+            
+            # Connect to MySQL server
+            temp_connection = mysql.connector.connect(**temp_config)
+            temp_cursor = temp_connection.cursor()
+            
+            # Create database if it doesn't exist
+            temp_cursor.execute(f"CREATE DATABASE IF NOT EXISTS {database_name} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+            print(f"✓ Database '{database_name}' is ready")
+            
+            temp_cursor.close()
+            temp_connection.close()
+            
+            # Now connect to the specific database
             self.connection = mysql.connector.connect(**self.mysql_config)
             self.cursor = self.connection.cursor()
             print(f"✓ Successfully connected to MySQL database: {self.mysql_config['database']}")
             return True
         except Error as e:
             print(f"✗ Error connecting to MySQL: {e}")
+            print("💡 Make sure MySQL server is running and credentials are correct")
             return False
     
     def create_table(self, table_name: str = "seinfeld_quotes") -> bool:
@@ -276,16 +294,18 @@ class SeinfeldCSVToMySQL:
 def main():
     """Main function to run the conversion."""
     
+    print("🎬 Seinfeld CSV to MySQL Converter")
+    print("=" * 40)
+    
     # Configuration
     csv_file_path = "/home/maxnchief/Custom_API/Seinfeld.csv"
     
-    # MySQL connection configuration
-    # You'll need to update these values for your MySQL setup
+    # MySQL connection configuration for dedicated user
     mysql_config = {
         'host': 'localhost',        # MySQL server host
         'port': 3306,               # MySQL server port
-        'user': 'your_username',    # MySQL username
-        'password': 'your_password', # MySQL password
+        'user': 'seinfeld_user',    # Dedicated MySQL user
+        'password': '',  # User password
         'database': 'seinfeld_db',  # Database name
         'charset': 'utf8mb4',
         'collation': 'utf8mb4_unicode_ci'
@@ -296,20 +316,13 @@ def main():
         print(f"✗ Error: CSV file not found at {csv_file_path}")
         sys.exit(1)
     
-    # Get MySQL configuration from user
+    # Display configuration
     print("🔧 MySQL Configuration")
     print("=" * 30)
-    
-    # You can uncomment these lines to prompt for MySQL credentials
-    # mysql_config['host'] = input(f"MySQL Host [{mysql_config['host']}]: ") or mysql_config['host']
-    # mysql_config['port'] = int(input(f"MySQL Port [{mysql_config['port']}]: ") or mysql_config['port'])
-    # mysql_config['user'] = input(f"MySQL Username [{mysql_config['user']}]: ") or mysql_config['user']
-    # mysql_config['password'] = input("MySQL Password: ")
-    # mysql_config['database'] = input(f"Database Name [{mysql_config['database']}]: ") or mysql_config['database']
-    
     print(f"Host: {mysql_config['host']}:{mysql_config['port']}")
     print(f"Database: {mysql_config['database']}")
     print(f"User: {mysql_config['user']}")
+    print(f"Authentication: Password")
     print()
     
     # Create converter instance and run conversion
