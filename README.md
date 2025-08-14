@@ -10,7 +10,7 @@
     ```bash
     psql -U your_username -d seinfeld -f setup_db.sql
     ```
-4. Load the CSV data:
-    ```bash
-    python import_csv.py
+4. run this in the psql 
+    \copy seinfeld_quotes(quote, character, season, episode) FROM 'Seinfeld.csv' CSV HEADER;
+
     ```
