@@ -11,6 +11,10 @@ import os
 import sys
 from typing import List, Tuple, Optional
 
+# Always use the CSV file in the same directory as this script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_CSV_PATH = os.path.join(SCRIPT_DIR, "Seinfeld.csv")
+
 class SeinfeldCSVToMySQL:
     def __init__(self, csv_file_path: str, mysql_config: dict):
         """
@@ -21,7 +25,7 @@ class SeinfeldCSVToMySQL:
             mysql_config: Dictionary containing MySQL connection parameters
         """
         self.csv_file_path = csv_file_path
-        self.mysql_config = mysql_config
+        self.mysql_config = mysql_config or {}
         self.connection = None
         self.cursor = None
         
@@ -297,8 +301,9 @@ def main():
     print("🎬 Seinfeld CSV to MySQL Converter")
     print("=" * 40)
     
-    # Configuration
-    csv_file_path = "/home/maxnchief/Custom_API/Seinfeld.csv"
+    # Use CSV file in the same directory as this script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_file_path = os.path.join(script_dir, "Seinfeld.csv")
     
     # MySQL connection configuration for dedicated user
     mysql_config = {
