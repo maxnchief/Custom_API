@@ -1,20 +1,25 @@
-# Database Design - Seinfeld Quote Explorer
+# Database Design - Seinfeld Quotes API
 
-## PostgreSQL Schema
+This document describes the database schema used for the Seinfeld Quotes API. The database is implemented in PostgreSQL.
 
-### Characters Table
-- `id` SERIAL PRIMARY KEY
-- `name` VARCHAR(100) NOT NULL
-- `image_url` TEXT
+---
 
-### Quotes Table
-- `id` SERIAL PRIMARY KEY
-- `character_id` INT REFERENCES characters(id)
-- `quote` TEXT NOT NULL
-- `season` INT
-- `episode` INT
-- `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+## Database: `seinfeld_db`
 
-### Relationships
-- Each quote belongs to a character (`quotes.character_id` → `characters.id`)
+### Table: `seinfeld_quotes`
 
+| Column      | Type                   | Nullable | Description                                        |
+|------------|------------------------|----------|--------------------------------------------------|
+| `id`       | `SERIAL PRIMARY KEY`   | No       | Unique identifier for each quote                 |
+| `quote`    | `TEXT`                 | No       | Text content of the quote                        |
+| `author`   | `VARCHAR(255)`         | No       | Name of the character/author                     |
+| `season`   | `INT`                  | Yes      | Season number of the show for the quote          |
+| `episode`  | `INT`                  | Yes      | Episode number of the show for the quote         |
+| `created_at` | `TIMESTAMP`          | Yes      | Timestamp when the record was inserted (default CURRENT_TIMESTAMP) |
+
+---
+# Database Design
+
+Here is the Entity-Relationship Diagram for the Seinfeld Quotes database:
+
+![ERD Diagram](images/ERD_Diagram.png)

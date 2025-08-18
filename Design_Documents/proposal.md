@@ -10,6 +10,7 @@ Build a web application displaying Seinfeld characters. Clicking a character sho
 - **CSV:** Source of quotes to populate DB
 - **Logging:** Custom logger (Malik)
 - **Unit Testing:** PyTest (Harrison)
+- **Documentation:** Sphinx (Max)
 
 ## Team Responsibilities
 - Harrison: API documentation (Sphinx), unit tests
