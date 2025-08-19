@@ -6,9 +6,6 @@ from seinfeld_loader import SeinfeldLoader
 app = Flask(__name__)
 CORS(app)  # This needs to come after 'app = Flask(__name__)'
 
-
-app = Flask(__name__)
-
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
