@@ -1,6 +1,11 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import logging
 from seinfeld_loader import SeinfeldLoader
+
+app = Flask(__name__)
+CORS(app)  # This needs to come after 'app = Flask(__name__)'
+
 
 app = Flask(__name__)
 
