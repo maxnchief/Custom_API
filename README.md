@@ -34,7 +34,7 @@ Custom_API/
 │ └─ wireframes/
 │ ├─ wireframe1.png
 │ └─ wireframe2.png
-├─ tests/
+├─ Tests/
 ├─ venv/
 └─ README.md
 
@@ -179,3 +179,13 @@ WebSockets for live quote updates
 
 Queuing system for long-running background tasks
 
+## 📘 Sphinx Documentation
+
+This project includes developer documentation built with [Sphinx](https://www.sphinx-doc.org/).
+
+### 📦 Requirements
+
+Make sure you have Python and `pip` installed. Then install Sphinx:
+
+```bash
+python3 -m pip install sphinx
