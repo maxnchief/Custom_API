@@ -19,10 +19,10 @@ def test_connect_to_postgres_fail(mock_connect):
 @patch("csv.reader")
 def test_read_csv_data_valid(mock_csv_reader, mock_open):
     loader = SeinfeldLoader(CSV_PATH)
-    mock_csv_reader.return_value = [
+    mock_csv_reader.return_value = iter([
         ["quote", "author", "season", "episode"],
         ["No soup for you", "Soup Nazi", "7", "6"]
-    ]
+    ])
     result = loader.read_csv_data()
     assert result == [("No soup for you", "Soup Nazi", 7, 6)]
 
