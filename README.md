@@ -1,5 +1,7 @@
 # Custom_API – Seinfeld Quotes API
 
+Last updated: 2025-12-10
+
 <p>
   <img alt="Python" src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img alt="PostgreSQL" src="https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" />
@@ -18,6 +20,7 @@ A full-stack project that serves Seinfeld quotes via a Flask API and displays th
 ---
 
 ## 🗂 Project Structure
+
 Custom_API/
 ├─ app.py
 ├─ seinfeld_loader.py
@@ -52,25 +55,29 @@ ERD for the Seinfeld quotes database:
 
 ## 🛠 Database Setup
 
-1. Install PostgreSQL (if not already installed).  
+1. Install PostgreSQL (if not already installed).
 2. Create the database:
 
 ```
 createdb seinfeld
 ```
+
 3. Run the SQL schema script:
 
 ```bash
 psql -U your_username -d seinfeld -f schema.sql
 ```
+
 4. Load data from the CSV file:
 
 sql
+
 ```
 -- In the psql terminal:
 \copy seinfeld_quotes(quote, author, season, episode) FROM
 'Seinfeld.csv' CSV HEADER;
 ```
+
 🖥 Backend Setup
 Activate the virtual environment:
 
@@ -79,16 +86,19 @@ Activate the virtual environment:
 source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate      # Windows
 ```
+
 2. Install dependencies:
 
 ```
 pip install -r requirements.txt
 ```
+
 3. Run the Flask API server:
 
 ```bash
 python3 app.py
 ```
+
 Backend runs at http://localhost:5000.
 
 🌐 Frontend Setup
@@ -97,11 +107,13 @@ Navigate to the frontend folder:
 ```bash
 cd FrontEnd
 ```
+
 2. Start a simple HTTP server:
 
 ```bash
 python3 -m http.server 8000
 ```
+
 Open your browser at http://localhost:8000.
 The frontend communicates with the backend API using CORS.
 
@@ -111,46 +123,50 @@ Get all quotes (paginated):
 ```
 GET /quotes?page=1&per_page=10
 ```
+
 Response Example:
 
 json
 Copy code
 {
-  "page": 1,
-  "per_page": 3,
-  "total_quotes": 334,
-  "total_pages": 112,
-  "quotes": [
-    {
-      "author": "Jerry",
-      "season": 1,
-      "episode": 1,
-      "quote": "You look like you live with your mother!"
-    }
-  ]
+"page": 1,
+"per_page": 3,
+"total_quotes": 334,
+"total_pages": 112,
+"quotes": [
+{
+"author": "Jerry",
+"season": 1,
+"episode": 1,
+"quote": "You look like you live with your mother!"
+}
+]
 }
 Get quotes by author (case-insensitive):
 
 ```bash
 GET /quotes/<author>
 ```
+
 Response Example:
 
 json
 Copy code
 [
-  {
-    "author": "Elaine",
-    "season": 1,
-    "episode": 4,
-    "quote": "You made a man cry? I've never made a man cry..."
-  }
+{
+"author": "Elaine",
+"season": 1,
+"episode": 4,
+"quote": "You made a man cry? I've never made a man cry..."
+}
 ]
 🧪 Testing
 Run pytest:
+
 ```
 pytest -v
 ```
+
 Tests cover:
 
 /quotes endpoint
@@ -189,3 +205,4 @@ Make sure you have Python and `pip` installed. Then install Sphinx:
 
 ```bash
 python3 -m pip install sphinx
+```
