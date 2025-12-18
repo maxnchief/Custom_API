@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from app import app
 
 # ----------------------------
-# Fixture for Flask test client
+# Fixture for flask test client
 # ----------------------------
 @pytest.fixture
 def client():
