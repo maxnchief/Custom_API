@@ -36,7 +36,7 @@ def test_get_quotes_success(mock_loader, client):
     instance = mock_loader.return_value
     instance.connect_to_postgres.return_value = True
 
-    # Set up mock cursor and its methods
+    # Set up mock cursor and it's methods
     mock_cursor = MagicMock()
     instance.cursor = mock_cursor
 
