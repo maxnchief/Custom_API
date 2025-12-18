@@ -97,7 +97,7 @@ author (string) – Name of the character/author (case-insensitive)
 
 Notes
 
-Pagination allows clients to request a subset of quotes per page.
+Pagination allows clients to request  subset of quotes per page.
 
 Author search is case-insensitive.
 
