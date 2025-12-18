@@ -10,7 +10,7 @@ This document describes the database schema used for the Seinfeld Quotes API. Th
 
 | Column      | Type                   | Nullable | Description                                        |
 |------------|------------------------|----------|--------------------------------------------------|
-| `id`       | `SERIAL PRIMARY KEY`   | No       | Unique identifier for each quote                 |
+| `id`       | `SERIAL PRIMARY KEY`   | No       | Unique identifier for every quote                 |
 | `quote`    | `TEXT`                 | No       | Text content of the quote                        |
 | `author`   | `VARCHAR(255)`         | No       | Name of the character/author                     |
 | `season`   | `INT`                  | Yes      | Season number of the show for the quote          |
