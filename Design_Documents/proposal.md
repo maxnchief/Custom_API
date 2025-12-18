@@ -22,7 +22,7 @@ Build a web application displaying Seinfeld characters. Clicking a character sho
 ## Development Timeline
 | Task                        | Duration |
 |------------------------------|----------|
-| Backend API & DB Integration | 2-3 days |
+| Backend API & DB Integration | 1-3 days |
 | Frontend + Wireframes        | 2 days   |
 | CSV Parsing & DB Population  | 1 day    |
 | Logging & Testing            | 1 day    |
